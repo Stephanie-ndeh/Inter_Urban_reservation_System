@@ -359,6 +359,10 @@ nav {
    width: 25%;
    padding: auto;
 }
+.footer h3{
+    color:  #E3E0F3;
+    padding: 20px;
+}
 .footer-col h4{
 	font-size: 18px;
 	color: #ffffff;
