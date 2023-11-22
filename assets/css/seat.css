@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+  }
+body {
+    background-color: #f5f3f3;
+  }
+.header {
+  min-height: 80px;
+  width: 100%;
+  background: whitesmoke;
+  color: black;
+  position: sticky;
+  left: 0;
+  top: 0;
+}
+
+nav h2 {
+  color: black;
+  margin-left: 60px;
+}
+
+nav {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.nav-links {
+  flex: 1;
+  text-align: center;
+}
+
+.nav-links ul {
+  margin-right: 100px;
+}
+
+.nav-links ul li {
+  list-style: none;
+  /* so theyll be no bullets */
+  display: inline-block;
+  /* so itll display horizontally*/
+  padding: 8px 12px;
+  position: relative;
+}
+
+.nav-links ul li a {
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 510;
+}
+
+.nav-links ul li::after {
+  /*the after is used to add a horizontal line under the list*/
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: #5eb6c2;
+  display: block;
+  margin: auto;
+  transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+  width: 100%;
+}
+.hero-buton {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0 15px;
+    font-size: 15px;
+    font-weight: 510;
+    background-color: #845EC2;
+    position: relative;
+    height: 37px;
+    line-height: 32px;
+    width: auto;
+    cursor: pointer;
+  }
+.hero-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 15px;
+  font-weight: 510;
+  background-color: #1d818c;
+  position: relative;
+  height: 32px;
+  line-height: 32px;
+  width: auto;
+  cursor: pointer;
+}
+
+.hero-btn:hover {
+  border: 1px solid #8ce89f;
+  background: #8ce89f;
+  transition: 1s;
+}
+
+.contain{
+    margin: 0 auto;
+    position: absolute;
+    border: 1px solid;
+    margin-top: 100px;
+    left: 20%;
+    width: 1000px;
+    height: 180px;
+    padding: 30px;
+}
+.contain p{
+    display: inline-block;
+    margin: 35px;
+    text-transform: capitalize;
+}
