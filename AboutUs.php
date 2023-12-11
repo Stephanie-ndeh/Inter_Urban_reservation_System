@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./assets/css/aboutUs.css">
+    <link rel="stylesheet" href="./assets/css/about.css">
     <title>Document</title>
 </head>
 <style>
@@ -25,19 +25,7 @@
 
 <body>
     <section class="header">
-        <nav>
-            <h2>BUS TICKET RESERVATION</h2>
-            <div class="nav-links" id="navLinks">
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="AboutUs.html">ABOUT</a></li>
-                    <li><a href="#">MANAGE BOOKING</a></li>
-                    <li><a href="Login.html">LOGIN</a></li>
-                    <li><a href="register.html">SIGNUP</a></li>
-                </ul>
-            </div>
-            <a href="Login.html" class="hero-btn">Login/SignUp</a>
-        </nav>
+        <?php include 'navbar.php' ?>
     </section>
     <section class="shift">
         <div class="heading">
@@ -83,51 +71,9 @@
             </p>
         </div>
     </section>
-    <section class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>company</h4>
-                    <ul>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Routes</a></li>
-                        <li><a href="#">privacy policy</a></li>
-                        <li><a href="#">Terms And Conditions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>get help</h4>
-                    <ul>
-                        <li><a href="#">returns</a></li>
-                        <li><a href="#">Ticket status</a></li>
-                        <li><a href="#">payment options</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Contact us</h4>
-                    <ul>
-                        <li><a href="#">Email: stephaniembysheri@gmail.com</a></li>
-                        <li><a href="#">Phone: +237-651-21-74-28</a></li>
-                        <li><a href="#">Location: Douala</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>follow us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-            </div>
-            <marquee behavior="sliding" direction="left" scrollamount="14">
-                <h3>Copyright © 2023 - 2030 by interUrbanTicketCom.com Privacy Policy All Rights Reserved</h3>
-            </marquee>
-        </div>
-
+    
+    <section>
+    <?php include 'footer.php' ?>
     </section>
 
 </body>

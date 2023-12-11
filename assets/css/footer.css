@@ -1,0 +1,17 @@
+.col-md-3 h5::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #00c89b;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.col-md-3 :not(:last-child){
+	margin-bottom: 10px;
+}
+.my-link h5{
+  color: #ffffff;
+	padding-left: 8px;
+}
