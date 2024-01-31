@@ -1,4 +1,5 @@
-.offcanvas-body ul li::after { /*the after is used to add a horizontal line under the list*/
+.offcanvas-body ul li::after {
+  /*the after is used to add a horizontal line under the list*/
   content: '';
   width: 0%;
   height: 2px;
@@ -7,14 +8,17 @@
   margin: auto;
   transition: 0.5s;
 }
-.offcanvas-body ul li:hover::after{
+
+.offcanvas-body ul li:hover::after {
   width: 100%;
 }
-.offcanvas-body{
+
+.offcanvas-body {
   font-size: 15px;
   font-weight: 510;
 }
-.offcanvas-title{
+
+.offcanvas-title {
   font-size: 15px;
   font-weight: 700;
 }
