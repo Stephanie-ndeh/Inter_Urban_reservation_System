@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.navs {
+    @apply relative ml-10 tracking-[1px] hover:text-white
+}
+
+.navs::after {
+    @apply content-[''] bg-[#1d818c] h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300
+}
+
+.navs:hover::after {
+    @apply w-[100%]
+}
+/* .navs{
+    @apply  cursor-pointer
+    transition-all
+    duration-500
+    before:content-['']
+    before:absolute
+    before:-bottom-2
+    before:left-0
+    before:w-0
+    before:h-1.5
+    before:rounded-full
+    before:opacity-0
+    before:transition-all
+    before:duration-500
+    before:bg-gradient-to-r
+    before:from-gray-600
+    before:via-slate-400
+    before:to-zinc-500
+    hover:before:w-full
+    hover:before:opacity-100
+} */

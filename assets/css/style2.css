@@ -1,0 +1,339 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #edeff0;
+}
+
+.header {
+  min-height: 80px;
+  width: 100%;
+  background: whitesmoke;
+  color: black;
+  position: sticky;
+  left: 0;
+  top: 0;
+}
+
+/* section two */
+.sectionTwo {
+  min-height: 60vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+    url(../pics/pexels-kaique-rocha-68427.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.text-box {
+  /*to align the text in the center of the page u need the following css*/
+  width: 90%;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text-box h1 {
+  font-size: 40px;
+}
+
+.text-box p {
+  margin: 10px 0px 40px;
+  font-size: 20px;
+  color: white;
+}
+
+.text-box input {
+  display: inline-block;
+  color: black;
+  border-radius: 5px;
+  padding: 12px 34px;
+  font-size: 15px;
+  background: #fff;
+  position: relative;
+  width: 250px;
+  font-weight: bold;
+  outline: none;
+}
+
+.text-box button {
+  display: inline-block;
+  color: white;
+  border: 1px solid #5eb6c2;
+  border-radius: 5px;
+  padding: 12px 34px;
+  font-size: 15px;
+  background: #5eb6c2;
+  position: relative;
+  width: 150px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.text-box button:hover {
+  border: 1px solid #65dab5;
+  background: #65dab5;
+  color: black;
+}
+
+::-webkit-datetime-edit-text {
+  color: transparent;
+}
+
+::-webkit-input-placeholder {
+  color: #999;
+}
+
+/* About Us Section */
+.aboutUs {
+  margin-top: 20px;
+  background-color: #fff;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 10px;
+}
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.about-image {
+  flex: 1;
+  margin-right: 30px;
+  overflow: hidden;
+  height: 450px;
+}
+
+.about-image:hover img {
+  transform: scale(1.2);
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  transition: 0.5s ease;
+}
+
+.about-content {
+  flex: 1;
+}
+
+.about-content h2 {
+  font-size: 23px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.about-content button {
+  display: inline-block;
+  color: white;
+  border: 1px solid #5eb6c2;
+  border-radius: 20px;
+  padding: 12px 34px;
+  font-size: 15px;
+  background: #5eb6c2;
+  position: relative;
+  width: 150px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.about-content button:hover {
+  background-color: #3e8e41;
+}
+
+/* Routes Section */
+.routes {
+  margin-top: 30px;
+}
+
+.routes div {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.routes h1 {
+  font-size: 40px;
+  color: #000000;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.routes h1::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  display: block;
+  margin: 0 auto;
+  background-color: #00c89b;
+}
+
+.routes ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.routes ul li {
+  display: inline-block;
+  width: 19.3%;
+  line-height: 30px;
+  margin-right: 8px;
+}
+
+.routes ul li a {
+  color: #323232;
+  font-size: 16px;
+  margin: 10px 0;
+  line-height: 19px;
+  display: inline-block;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+/* .routes ul li a i{
+      color: #5EB6C2;
+  } */
+/* reasons section */
+.reasons {
+  width: 99%;
+  margin: auto;
+  text-align: center;
+  padding-top: 100px;
+  background: #fff;
+}
+
+.reasons h1 {
+  font-size: 30px;
+}
+
+.reasons .course-col {
+  flex-basis: 31%;
+  /* this ensures the colors dont join together */
+  background-color: #edeff0;
+  border-radius: 10px;
+  margin-bottom: 5%;
+  padding: 20px 12px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  box-shadow: black;
+}
+
+.reasons .row {
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reasons h2 {
+  text-align: center;
+  margin: 10px 0;
+  color: #00c89b;
+  font-weight: bold;
+}
+
+.course-col:hover {
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.box-info .bx {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  font-size: 36px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+/*responsive*/
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+  .heading {
+    padding: 0px 20px;
+  }
+
+  .heading h1 {
+    font-size: 36px;
+  }
+
+  .heading p {
+    font-size: 17px;
+    margin-bottom: 0px;
+  }
+
+  .container {
+    padding: 0px;
+  }
+
+  .about {
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .about-image {
+    margin-right: 0px;
+    margin-bottom: 20px;
+  }
+
+  .about-content p {
+    padding: 0px;
+    font-size: 16px;
+  }
+
+  .about-content .read-more {
+    font-size: 16px;
+  }
+
+
+  input[type="text"],
+  input[type="date"],
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+
+}
