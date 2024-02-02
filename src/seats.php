@@ -30,7 +30,7 @@
           </div>
           <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
             <button class="h-9   px-6  font-semibold rounded-md bg-[#1d818c] text-white shadow-xl hover:bg-teal-600" type="submit">
-              View seat
+              <a href="seatSelection.html">View Seat</a>
             </button>
           </div>
         </div>
