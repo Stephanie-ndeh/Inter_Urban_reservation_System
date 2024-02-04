@@ -25,7 +25,7 @@
                         <input class="peer hidden" type="radio" name="payment" id="payment1">
                         <div class="payment-content border-2 border-gray-200 px-4 py-6 rounded-lg">
                             <img class="payment-image" src="../assets/pics/logo_mastercard.svg" alt="master card">
-                            <a href="#" class="payment-text">Pay with MastCard</a>
+                            <a href="cardpayment.php" class="payment-text">Pay with MastCard</a>
 
                         </div>
                         <div class="payment-checked">
@@ -52,7 +52,7 @@
                         <input class="peer hidden" type="radio" name="payment" id="payment3">
                         <div class="payment-content border-2 border-gray-200 px-4 py-6 rounded-lg">
                             <img class="payment-image" src="../assets/pics/orange4.png" alt="master card">
-                            <a href="#" class="payment-text">Pay with Orange</a>
+                            <a href="../src/mobilePayment.php" class="payment-text">Pay with Orange</a>
                         </div>
                         <div class="payment-checked">
                             <img src="../assets/pics/icon_check.svg" alt="">
@@ -64,7 +64,7 @@
                         <input class="peer hidden" type="radio" name="payment" id="payment4">
                         <div class="payment-content border-2 border-gray-200 px-4 py-6 rounded-lg">
                             <img class="payment-image" src="../assets/pics/mtn.png" alt="master card">
-                            <a href="#" class="payment-text">Pay with MTN</a>
+                            <a href="../src/mobilePayment.php" class="payment-text">Pay with MTN</a>
 
                         </div>
                         <div class="payment-checked">
