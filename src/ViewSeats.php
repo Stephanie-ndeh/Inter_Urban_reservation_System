@@ -9,7 +9,9 @@
 
 <body class="bg-gray-200">
   <section class="text-gray-600 body-font">
-
+    <div class="sticky top-0">
+      <?php include 'nav.html' ?>
+    </div>
     <div class="container px-5 py-24 mx-auto flex flex-wrap ">
 
       <div class="flex flex-col flex-wrap lg:py-6  -mb-10  lg:w-1/2 lg:pl-12 lg:text-left -mr-1">
@@ -27,9 +29,8 @@
             <p class="leading-relaxed">11:30</p>
           </div>
           <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
-            <button class="h-9   px-6  font-semibold rounded-md bg-[#1d818c] text-white shadow-xl hover:bg-teal-600"
-              type="submit">
-              View seat
+            <button class="h-9   px-6  font-semibold rounded-md bg-[#1d818c] text-white shadow-xl hover:bg-teal-600" type="submit">
+              <a href="seatSelection.html">View Seat</a>
             </button>
           </div>
         </div>
@@ -48,8 +49,7 @@
             <p class="leading-relaxed">11:30</p>
           </div>
           <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
-            <button class="h-9   px-6  font-semibold rounded-md bg-[#1d818c] text-white shadow-xl hover:bg-teal-600"
-              type="submit">
+            <button class="h-9   px-6  font-semibold rounded-md bg-[#1d818c] text-white shadow-xl hover:bg-teal-600" type="submit">
               View seat
             </button>
           </div>
@@ -69,17 +69,17 @@
             <p class="leading-relaxed">11:30</p>
           </div>
           <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
-            <button class="h-9   px-6  font-semibold rounded-md bg-[#1d818c] text-white shadow-xl hover:bg-teal-600"
-              type="submit">
+            <button class="h-9   px-6  font-semibold rounded-md bg-[#1d818c] text-white shadow-xl hover:bg-teal-600" type="submit">
               View seat
             </button>
           </div>
         </div>
       </div>
       <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden ">
-        <img alt="feature" class="object-cover object-center h-full w-full" src="https://dummyimage.com/460x500">
+        <img alt="feature" class=" h-96 w-full ml-9" src="../assets/pics/undraw_selected_box_09k4.svg">
       </div>
     </div>
+    <?php include 'foot.html' ?>
   </section>
 </body>
 

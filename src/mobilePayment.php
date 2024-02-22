@@ -10,10 +10,9 @@
     <section class="text-gray-600 body-font">
               <?php include 'nav.html' ?>
         <div class="container px-5 py-24 mx-auto flex flex-wrap justify-center items-center">
-          <!-- <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-            <h1 class="title-font font-medium text-3xl text-gray-900">Slow-carb next level shoindcgoitch ethical authentic, poko scenester</h1>
-            <p class="leading-relaxed mt-4">Poke slow-carb mixtape knausgaard, typewriter street art gentrify hammock starladder roathse. Craies vegan tousled etsy austin.</p>
-          </div> -->
+          <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+           <img src="../assets/pics/undraw_mobile_pay_re_sjb8.svg" class="h-96 w-full" alt="">
+          </div>
           <div class="lg:w-2/6 md:w-1/2 bg-white rounded-lg p-8 flex flex-col mt-0 w-full  md:mt-0">
             <h2 class="text-gray-900 text-lg text-center font-medium title-font mb-5">Orange Money <> MTN Mobile Money</h2>
             <div class="relative mb-4">
