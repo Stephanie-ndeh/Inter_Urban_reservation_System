@@ -10,7 +10,7 @@
 </head>
 
 <body class="bg-gray-200">
-  
+
 
   <section class="text-gray-600 body-font">
     <div class="container  px-5 py-24 mx-auto flex flex-wrap items-center">
@@ -22,23 +22,37 @@
 
         <?php
         include 'db/db_connect.php';
+        session_start();
         if (isset($_POST['submit'])) {
           $email = $_POST['email'];
           $password = $_POST['password'];
-        
-          $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+
+          // Hash the user's password
+          $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+          // Query the database with the hashed password
+          $sql = "SELECT * FROM users WHERE email='$email'";
           $result = mysqli_query($conn, $sql);
+
           if ($result->num_rows > 0) {
             $row = mysqli_fetch_assoc($result);
-            $_SESSION['username'] = $row['username'];
-            header("Location: indexx.php");
-          }
-          
-          else {
-            echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
+
+            // Verify the entered password against the stored hash
+            if (password_verify($password, $row['password'])) {
+              // Password is correct; set session and redirect
+              $_SESSION['name'] = $row['name'];
+              header("Location: indexx.php");
+              exit; // Important: End the script after redirection
+            } else {
+              echo "<script>alert('Woops! Incorrect Password.')</script>";
+            }
+          } else {
+            echo "<script>alert('Woops! Email Not Found.')</script>";
           }
         }
         ?>
+        <!-- Your HTML form goes here -->
+
         <form action="Login.php" method="post">
           <div class="relative mb-4">
             <label for="email" class="leading-7 text-sm text-gray-600">Email</label>

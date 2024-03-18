@@ -1,0 +1,17 @@
+.seat-container {
+    position: relative;
+    display: inline-block;
+    margin: 13px;
+}
+
+.seat-number {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(207, 201, 201);
+    padding: 5px;
+    border-radius: 5px;
+}
