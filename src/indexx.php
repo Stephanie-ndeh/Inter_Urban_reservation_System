@@ -28,11 +28,11 @@
             <form action="available_buses.php" method="post">
                 <select name="from_location" id="">
                     <option value="1">Douala</option>
-                    <option value="3">Bamenda</option>
+                    <option value="3">Buea</option>
                 </select>
                 <select name="to_location" id="">
                     <option value="2">Yaounde</option>
-                    <option value="4">Buea</option>
+                    <option value="4">Bamenda</option>
                 </select>
                 <!-- <input type="text" id="from" name="from" placeholder="Origin" />
                 <input type="text" id="to" name="to" placeholder="Destination" /> -->
