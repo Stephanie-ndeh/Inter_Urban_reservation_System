@@ -28,15 +28,15 @@ session_start();
                         if (isset($_GET['booking_id']) && is_numeric($_GET['booking_id'])) {
                             $booking_id = $_GET['booking_id'];
                             $sql = "
-                        SELECT b.id AS booking_id, p.fname, p.cardNo, p.gender, p.email, p.phoneNo,
-                        l1.name AS from_location, l2.name AS to_location, bus.BusType
-                        FROM reservations b
-                        INNER JOIN passengers p ON b.passenger_id = p.id
-                        INNER JOIN buses bus ON b.bus_id = bus.id
-                        INNER JOIN routes r ON bus.route_id = r.id
-                        INNER JOIN locations l1 ON r.from_location_id = l1.id
-                        INNER JOIN locations l2 ON r.to_location_id = l2.id
-                        WHERE b.id = :booking_id
+                            SELECT b.id AS booking_id, p.fname, p.cardNo, p.gender, p.email, p.phoneNo,
+                            l1.name AS from_location, l2.name AS to_location, bus.BusType, b.seat_price
+                            FROM reservations b
+                            INNER JOIN passengers p ON b.passenger_id = p.id
+                            INNER JOIN buses bus ON b.bus_id = bus.id
+                            INNER JOIN routes r ON bus.route_id = r.id
+                            INNER JOIN locations l1 ON r.from_location_id = l1.id
+                            INNER JOIN locations l2 ON r.to_location_id = l2.id
+                            WHERE b.id = :booking_id
                         ";
 
                             // Execute SQL query
@@ -139,13 +139,11 @@ session_start();
 
                         </div>
                         <div class="">
-                            <label for="region" class="block text-lg font-medium leading-6  text-[#1d818c] ">Price</label>
+                            <label for="region" class="block text-lg font-medium leading-6  text-[#1d818c] ">Seat Price</label>
                             <div class="mt-2">
                                 <div class="flex mb-4">
                                     <div class="flex text-xl font-bold">
-
-                                        <span id="totalPrice" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-black placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6"><?php echo isset($_GET['totalPrice']) ? $_GET['totalPrice'] : ''; ?></span>
-                                    </div>
+                                    <span class="mr-3"><?php echo $row['seat_price']; ?></span>                                    </div>
                                 </div>
                             </div>
 
@@ -189,14 +187,6 @@ session_start();
 
                         </div>
                         <div class="sm:col-span-2 ml-8">
-                            <label for="region" class="block text-lg font-medium leading-6  text-[#1d818c] ">Bus fair</label>
-                            <div class="mt-2">
-                                <div class="flex mb-4">
-                                    <div class="flex text-xl font-bold">
-                                        <span class="mr-3  ">5000frs</span>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="mt-6 flex items-center justify-end gap-x-6">
                                 <button type="submit" class="rounded-md bg-[#1d818c] px-4 py-2 text-lg font-semibold text-white shadow-sm hover:bg-teal-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"><a href="paymentMethod.php">MAKE PAYMENT</a></button>
                             </div>

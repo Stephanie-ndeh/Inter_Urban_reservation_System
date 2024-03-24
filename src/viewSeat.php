@@ -2,7 +2,6 @@
 include 'db/db_connect.php';
 session_start();
 $selected_bus = $_SESSION['selected_bus'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +23,12 @@ $selected_bus = $_SESSION['selected_bus'];
     }
 
     .selected {
-        background-color: green;
+        background-color: #1d818c;
+    }
+
+    .booked {
+        background-color: red;
+        cursor: not-allowed;
     }
 </style>
 
@@ -39,50 +43,57 @@ $selected_bus = $_SESSION['selected_bus'];
 
                     function getAvailableSeats($bus_id)
                     {
-                        global $pdo; // Assuming $pdo is the PDO connection object
-                        $sql = "SELECT id, seat_number FROM seats WHERE bus_id = :bus_id AND is_booked = 0";
+                        global $pdo;
+                        $sql = "SELECT id, seat_number, is_booked FROM seats WHERE bus_id = :bus_id ";
                         $stmt = $pdo->prepare($sql);
                         $stmt->bindParam(':bus_id', $bus_id, PDO::PARAM_INT);
                         $stmt->execute();
-                        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+                        return $stmt->fetchAll(PDO::FETCH_ASSOC);
                     }
 
 
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selectedSeats'])) {
-                        $bus_id = $_POST['bus_id']; // or $_GET['bus_id'] if passed via URL
-                        $selectedSeats = json_decode($_POST['selectedSeats']);
-                        $_SESSION['selectedSeats'] = $selectedSeats;
-                    } else {
-                        $bus_id = $_GET['bus_id']; // Assuming bus_id is passed via URL
-                        $available_seats = getAvailableSeats($bus_id);
-                        $seat_image_path = '../assets/pics/629421-200.png';
-                        if (count($available_seats) > 0) {
+
+                    // if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selectedSeats'])) {
+                    // $bus_id = $_POST['bus_id'];
+                    // $selectedSeats = json_decode($_POST['selectedSeats']);
+                    // $_SESSION['selectedSeats'] = $selectedSeats;
+                    // } else {
+                    $bus_id = $_GET['bus_id'];
+                    $available_seats = getAvailableSeats($bus_id);
+                    $seat_image_path = '../assets/pics/629421-200.png';
+                    if (count($available_seats) > 0) {
                     ?>
-                            <div class="flex -mb-2">
-                                <div class="flex-1  ml-8">
+                        <div class="flex -mb-2">
+                            <div class="flex-1  ml-8">
                             <?php
                             foreach ($available_seats as $seat) {
+                                // $class = (isset($seat['is_booked']) && $seat['is_booked'] == 1) ? ' booked' : '';
                                 echo '<div class="seat-container">';
-                                echo '<button class=" w-12 h-11 focus:outline-none" onclick="toggleSeat(this)">';
+                                if ($seat['is_booked'] == 0) {
+                                    echo '<button class=" w-12 h-11 focus:outline-none" onclick="toggleSeat(this)" data-seat-id="' . $seat['id'] . '">';
+                                } else {
+                                    echo '<button class=" booked w-12 h-11 focus:outline-none" disabled>';
+                                }
                                 echo '<img src="' . $seat_image_path . '" alt="Seat Image">';
-                                echo '<span class="seat-number">' . $seat . '</span>';
+                                echo '<span class="seat-number">' . $seat['seat_number'] . '</span>';
                                 echo '</button>';
                                 echo '</div>';
                             }
+                            echo '</div>';
+                            echo '</div>';
                         }
-                    }
+
                             ?>
 
-                                </div>
-                            </div>
-                </div>
-                <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                    <!-- <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-                    <h1 class="text-gray-900 text-3xl title-font font-medium -mb-2">The Catcher in the Rye</h1> -->
-                    <?php
-                    $bus_id = $_GET['bus_id'];
 
-                    $sql = "
+                            </div>
+                            <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                                <!-- <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
+                    <h1 class="text-gray-900 text-3xl title-font font-medium -mb-2">The Catcher in the Rye</h1> -->
+                                <?php
+                                $bus_id = $_GET['bus_id'];
+
+                                $sql = "
                             SELECT l_from.name AS from_location_id, l_to.name AS to_location_id
                             FROM seats s
                             INNER JOIN buses b ON s.bus_id = b.id
@@ -93,106 +104,96 @@ $selected_bus = $_SESSION['selected_bus'];
                             AND s.is_booked = 0
                             LIMIT 1
                         ";
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->bindParam(':bus_id', $bus_id, PDO::PARAM_INT);
-                    $stmt->execute();
+                                $stmt = $pdo->prepare($sql);
+                                $stmt->bindParam(':bus_id', $bus_id, PDO::PARAM_INT);
+                                $stmt->execute();
 
-                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    foreach ($results as $row) {
-                        echo ' <div class="flex mb-4">';
-                        echo ' <div class="flex text-xl font-bold">';
-                        echo ' <span class="mr-3  text-[#1d818c]">Boarding Point: </span>';
-                        echo ' <p>' . $row['from_location_id'] . '</p>';
-                        echo '</div>';
-                        echo '</div>';
+                                foreach ($results as $row) {
+                                    echo ' <div class="flex mb-4">';
+                                    echo ' <div class="flex text-xl font-bold">';
+                                    echo ' <span class="mr-3  text-[#1d818c]">Boarding Point: </span>';
+                                    echo ' <p>' . $row['from_location_id'] . '</p>';
+                                    echo '</div>';
+                                    echo '</div>';
 
-                        echo ' <div class="flex mb-4">';
-                        echo ' <div class="flex text-xl font-bold">';
-                        echo ' <span class="mr-3  text-[#1d818c]">Departure Point: </span>';
-                        echo ' <p>' . $row['to_location_id'] . '</p>';
-                        echo '</div>';
-                        echo '</div>';
-                    }
-                    ?>
-                    <div class="flex mb-4">
-                        <div class="flex text-xl  font-bold">
-                            <span class="mr-3   text-[#1d818c]">Seat No</span>
-                            <p class="seat-numbers"></p>
+                                    echo ' <div class="flex mb-4">';
+                                    echo ' <div class="flex text-xl font-bold">';
+                                    echo ' <span class="mr-3  text-[#1d818c]">Departure Point: </span>';
+                                    echo ' <p>' . $row['to_location_id'] . '</p>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                }
+                                ?>
+                                <div class="flex mb-4">
+                                    <div class="flex text-xl  font-bold">
+                                        <span class="mr-3   text-[#1d818c]">Seat No</span>
+                                        <p class="seat-numbers"></p>
+                                    </div>
+                                </div>
+
+                                <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+                                    <div class="flex">
+                                        <span class="mr-3">Available</span>
+                                        <button class="border-2 border-gray-300 ml-2  bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                                        <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
+
+                                        <span class="mr-3">Reserved</span>
+                                        <button class="border-2 border-gray-300 ml-2 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
+                                        <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
+
+                                        <span class="mr-3">Selected</span>
+                                        <button class="border-2 border-gray-300 ml-2 bg-[#1d818c] rounded-full w-6 h-6 focus:outline-none"></button>
+                                        <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
+
+                                    </div>
+
+                                </div>
+                                <div class="flex">
+                                    <span class="title-font font-bold text-2xl text-black">Total: FRS CFA</span>
+                                    <span class="title-font font-medium text-2xl text-[#1d818c] ml-3" id="totalPrice">0</span>
+                                    <form id="bookingForm" action="booking.php" method="post">
+                                        <input type="hidden" id="selectedSeats" name="selectedSeats">
+                                    </form>
+                                    <button class="flex ml-auto text-white bg-[#1d818c] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onclick="submitBookingForm()">Book Now</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-                        <div class="flex">
-                            <span class="mr-3">Available</span>
-                            <button class="border-2 border-gray-300 ml-2  bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
-                            <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-
-                            <span class="mr-3">Reserved</span>
-                            <button class="border-2 border-gray-300 ml-2 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                            <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-
-                            <span class="mr-3">Selected</span>
-                            <button class="border-2 border-gray-300 ml-2 bg-[#1d818c] rounded-full w-6 h-6 focus:outline-none"></button>
-                            <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-
-                        </div>
-
-                    </div>
-                    <div class="flex">
-                        <span class="title-font font-bold text-2xl text-black">Total: FRS CFA</span>
-                        <span class="title-font font-medium text-2xl text-[#1d818c] ml-3" id="totalPrice">0</span>
-                        <form id="bookingForm" action="booking.php" method="post">
-                            <input type="hidden" id="selectedSeats" name="selectedSeats">
-                            <!-- Other form fields -->
-                        </form>
-                        <button class="flex ml-auto text-white bg-[#1d818c] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onclick="submitBookingForm()">Book Now</button>
-                    </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Add more seat divs as needed -->
 
 
     </section>
     <script>
-        let selectedSeats = [];
-        const seatPrice = 5000;
-
-
-
         function toggleSeat(seatButton) {
-            // Toggle seat color
             seatButton.classList.toggle('selected');
+            seatButton.classList.remove('booked');
 
-            // Get the seat number
             var seatNumber = seatButton.querySelector('.seat-number').textContent;
 
-            // Update the displayed seat numbers
             var seatNumbersContainer = document.querySelector('.seat-numbers');
             var seatNumbers = seatNumbersContainer.textContent.split(',').map(num => num.trim());
             if (seatNumbers.includes(seatNumber)) {
-                // If seat is already selected, remove it
                 seatNumbers = seatNumbers.filter(num => num !== seatNumber);
             } else {
-                // If seat is not selected, add it
                 seatNumbers.push(seatNumber);
             }
             seatNumbersContainer.textContent = seatNumbers.join(', ');
 
-            // Calculate total price
             var totalPrice = 0;
             var selectedSeats = document.querySelectorAll('.selected');
             selectedSeats.forEach(function(seat) {
-                totalPrice += 2000; // Assuming each seat costs $2000
+                totalPrice += 5000;
             });
 
-            // Display total price
             document.getElementById('totalPrice').textContent = totalPrice;
 
-            // Update hidden input field with selected seat numbers
             document.getElementById('selectedSeats').value = JSON.stringify(seatNumbers);
+            if (seatButton.classList.contains('booked')) {
+                seatButton.classList.add('booked');
+            }
+
         }
 
         function submitBookingForm() {
@@ -200,18 +201,13 @@ $selected_bus = $_SESSION['selected_bus'];
             if (selectedSeats.length === 0) {
                 alert("Please select at least one seat to proceed with booking.");
             } else {
-                // Get total price
                 var totalPrice = document.getElementById('totalPrice').textContent;
-                // Get selected seat numbers
                 var selectedSeatNumbers = [];
                 selectedSeats.forEach(function(seat) {
                     selectedSeatNumbers.push(seat.querySelector('.seat-number').textContent);
                 });
-                // Encode selected seat numbers
                 var encodedSelectedSeats = encodeURIComponent(JSON.stringify(selectedSeatNumbers));
-                // Encode total price
                 var encodedTotalPrice = encodeURIComponent(totalPrice);
-                // Redirect to booking.php with selected seats and total price as parameters
                 window.location.href = "booking.php?selectedSeats=" + encodedSelectedSeats + "&totalPrice=" + encodedTotalPrice;
             }
         }
