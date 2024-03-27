@@ -1,5 +1,4 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,8 +30,6 @@
                     <option value="2">Yaounde</option>
                     <option value="4">Bamenda</option>
                 </select>
-                <!-- <input type="text" id="from" name="from" placeholder="Origin" />
-                <input type="text" id="to" name="to" placeholder="Destination" /> -->
                 <input type="text" id="date" name="departure_date" placeholder="Departure Date" onfocus="(this.type='date')" />
 
                 <button type="submit" name="submit">SEARCH</button>
@@ -57,7 +54,7 @@
                         tickets directly from the major bus operators (over 1000 bus
                         operators) for all the routes in Cameroon.
                     </p>
-                    <button type="submit">SEARCH</button>
+                    <button type="submit"><a href="AboutUs.php">More</a></button>
                 </div>
             </section>
         </div>

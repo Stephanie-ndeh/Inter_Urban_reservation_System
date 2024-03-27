@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-$selected_seats = $_SESSION['selectedSeats'];
+$selectedSeats = $_SESSION['selectedSeats'];
 $totalPrice = $_GET['totalPrice'];
 $totalPrice = urldecode($totalPrice);
 ?>

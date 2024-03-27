@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $reservation_stmt->bindParam(':seat_id', $seat_id);
         $reservation_stmt->bindParam(':bus_id', $selected_bus['id']);
         $reservation_stmt->bindParam(':seat_number', $seat_number);
-        $reservation_stmt->bindParam(':total_price', $totalPrice); // Update this line
+        $reservation_stmt->bindParam(':total_price', $totalPrice); 
         $reservation_stmt->execute();
     }
     $booking_id = $pdo->lastInsertId();

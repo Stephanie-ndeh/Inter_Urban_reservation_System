@@ -53,11 +53,11 @@ $selected_bus = $_SESSION['selected_bus'];
 
 
 
-                    // if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selectedSeats'])) {
-                    // $bus_id = $_POST['bus_id'];
-                    // $selectedSeats = json_decode($_POST['selectedSeats']);
-                    // $_SESSION['selectedSeats'] = $selectedSeats;
-                    // } else {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selectedSeats'])) {
+                    $bus_id = $_POST['bus_id'];
+                    $selectedSeats = json_decode($_POST['selectedSeats']);
+                    $_SESSION['selectedSeats'] = $selectedSeats;
+                    } else {
                     $bus_id = $_GET['bus_id'];
                     $available_seats = getAvailableSeats($bus_id);
                     $seat_image_path = '../assets/pics/629421-200.png';
@@ -79,9 +79,11 @@ $selected_bus = $_SESSION['selected_bus'];
                                 echo '</button>';
                                 echo '</div>';
                             }
+                        }
                             echo '</div>';
                             echo '</div>';
                         }
+                    
 
                             ?>
 

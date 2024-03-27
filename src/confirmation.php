@@ -56,7 +56,6 @@ session_start();
                                         <div class="flex mb-4">
                                             <div class="flex text-xl font-bold">
                                                 <span class="mr-3  "><?php echo  $row['from_location']; ?></span>
-                                                <!-- <p>Douala</p> -->
                                             </div>
                                         </div>
                                     </div>
@@ -68,7 +67,7 @@ session_start();
                                     <div class="mt-2">
                                         <div class="flex mb-4">
                                             <div class="flex text-xl font-bold">
-                                                <span class="mr-3  "><?php echo  $row['to_location']; ?></span>
+                                                <span class="mr-3 "><?php echo  $row['to_location']; ?></span>
                                             </div>
                                         </div>
                                     </div>
